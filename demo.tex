@@ -17,10 +17,10 @@
 \subtitle{Universidade Federal da Bahia\\
             Programa de Pós-Graduação em Engenharia Elétrica}
 \date{\today}
-\date{Orientador: Prof. Dr. Wagner Luiz Alves de Oliveira}
+\date{Orientador: Prof. Dr. Wagner Luiz Alves de Oliveira\\Coorientador: Prof. Dr. Paulo César Farias}
 \author{Autor: Nestor Dias Pereira Neto}
-\institute{Salvador, 3 de abril de 2019}
-\titlegraphic{\hfill\includegraphics[height=1.5cm]{logo.png}}
+\institute{Salvador, 5 de dezembro de 2022}
+\titlegraphic{\hfill\includegraphics[height=1.85cm]{imagens/logo.png}}
 
 
 
@@ -39,7 +39,7 @@
 %=================================================================
 % PROBLEMA
 %=================================================================
-\section{Problema}
+\section{Introdução}
 
 % Slide 
 %-----------------------------------------------------------------
@@ -99,9 +99,7 @@
 \begin{frame}[fragile]{Problema}
     \begin{itemize}
         \item Por se tratar de um hardware configurável o FPGA é ideal para processamento digitais de sinais.
-      
         \item O FPGA está próximos a revolucionar o processamento digital de sinais, assim como os DSPs fizeram algumas décadas atrás.
-       
         \item As facilidade de desenvolvimento encontradas em aplicações que fazem uso de softwares não são encontradas nas mesmas proporções no mundo do hardware.
     \end{itemize}
 \end{frame}
@@ -113,23 +111,69 @@
 {
 \metroset{titleformat frame=smallcaps}
 \begin{frame}[fragile]{Problema}
-\begin{itemize}
-	\item \textbf{Como estabelecer a comunicação entre o ROS e um sistema de processamento de vídeo embarcado em um FPGA? }
-\end{itemize}
+	\begin{itemize}
+		\item \textbf{Como estabelecer a comunicação entre o ROS e um sistema de processamento de vídeo embarcado em um FPGA? }
+	\end{itemize}
+	\begin{itemize}
+		\item \textbf{O estabelecimento da comunicação entre o FPGA e o ROS e a execução do processamento de vídeo de forma paralela, embarcada em um FPGA, pode melhorar o desempenho do sistema?}
+	\end{itemize}
+\end{frame}
+}
 
 
-\begin{itemize}
-	\item \textbf{O estabelecimento da comunicação entre o FPGA e o ROS e a execução do processamento de vídeo de forma paralela, embarcada em um FPGA, pode melhorar o desempenho do sistema?}
-\end{itemize}
+% Slide JUSTIFICATIVA
+%-----------------------------------------------------------------
+\begin{frame}[fragile]{Justificativa}
+    \begin{itemize}
+        \item Nos últimos anos, novas técnicas para construção de robôs têm sido bastante estudadas e a robótica móvel tem recebido grande atenção.
+        \item Busca por maior autonomia, sistemais mais complexos.
+        \item FPGA uma opção para aumento de desempenho computacional, combinado com baixo consumo.
+        \item Poucas pesquisas relacionadas ao tema.
+        \item Reaproveitamento da pesquisa em outros projetos das mais diversas áreas.
+    \end{itemize}
+\end{frame}
 
 
+
+
+% Slide OBJETIVOS
+%-----------------------------------------------------------------
+\subsection{Objetivos}
+{
+\metroset{titleformat frame=smallcaps}
+\begin{frame}{Objetivos}
+    \begin{alertblock}{Objetivo geral}
+    	\begin{itemize}
+    	\item Desenvolver uma solução para estabelecer comunicação entre \textit{Field-Programmable Gate Array - FPGA}, configurado como um coprocessador de vídeo e o \textit{Robot Operating System - ROS}, avaliando o impacto desta aplicação ao sistema.
+    	\end{itemize}
+    \end{alertblock}
+\end{frame}
+}
+
+
+
+
+{
+\metroset{titleformat frame=smallcaps}
+\begin{frame}{Objetivos}
+	\begin{alertblock}{Objetivos específicos}
+        \begin{itemize}
+        	\item Estudar os assuntos relevantes ao projeto: Verilog HDL, RTOS, Nios II, TCO/IP Stack, ROS.
+        	\item Conhecer com detalhes os protocolos da rede TCP/IP usada para comunicação interna dos nós e serviços ROS.
+        	\item Desenvolver plataforma com Nios II como base para o andamento do projeto.
+        	\item Implementar um sistema operacional de tempo real - RTOS na plataforma base.
+        	\item Estabelecer comunicação entre o ROS e o sistema Nios II (embarcado no FPGA) através da tecnologia Gigabit Ethernet.
+        	\item Testar aplicações de processamento de vídeo em hardware em conjunto com ROS.
+        	\item Avaliar a desempenho com a inclusão do FPGA ao sistema.
+        \end{itemize}
+	\end{alertblock}
 \end{frame}
 }
 
 %=================================================================
 % HIPÓTESE
 %=================================================================
-\section{Hipótese}
+\section{Parte I: Referenciais Teórico}
 {
 \metroset{titleformat frame=smallcaps}
 \begin{frame}{Hipótese}
@@ -150,70 +194,14 @@
 %=================================================================
 % JUSTIFICATIVA
 %=================================================================
-\section{Justificativa}
 
-
-\begin{frame}[fragile]{Justificativa}
-    \begin{itemize}
-        \item Nos últimos anos, novas técnicas para construção de robôs têm sido bastante estudadas e a robótica móvel tem recebido grande atenção.
-        
-        \item Busca por maior autonomia, sistemais mais complexos.
-        
-        \item FPGA uma opção para aumento de desempenho computacional, combinado com baixo consumo.
-        
-        \item Poucas pesquisas relacionadas ao tema.
-        
-        \item Reaproveitamento da pesquisa em outros projetos das mais diversas áreas.
-    \end{itemize}
-        
-
-\end{frame}
-
-
-
-
-
-
-%=================================================================
-% OBJETIVOS
-%=================================================================
-\section{Objetivos}
-
-{
-\metroset{titleformat frame=smallcaps}
-\begin{frame}{Objetivos}
-    \begin{alertblock}{Objetivo geral}
-    	\begin{itemize}
-    	\item Desenvolver uma solução para estabelecer comunicação entre \textit{Field-Programmable Gate Array - FPGA}, configurado como um coprocessador de vídeo e o \textit{Robot Operating System - ROS}, avaliando o impacto desta aplicação ao sistema.
-    	\end{itemize}
-    \end{alertblock}
-\end{frame}
-}
-
-{
-\metroset{titleformat frame=smallcaps}
-\begin{frame}{Objetivos}
-	\begin{alertblock}{Objetivos específicos}
-        \begin{itemize}
-        	\item Estudar os assuntos relevantes ao projeto: Verilog HDL, RTOS, Nios II, TCO/IP Stack, ROS.
-        	\item Conhecer com detalhes os protocolos da rede TCP/IP usada para comunicação interna dos nós e serviços ROS.
-        	\item Desenvolver plataforma com Nios II como base para o andamento do projeto.
-        	\item Implementar um sistema operacional de tempo real - RTOS na plataforma base.
-        	\item Estabelecer comunicação entre o ROS e o sistema Nios II (embarcado no FPGA) através da tecnologia Gigabit Ethernet.
-        	\item Testar aplicações de processamento de vídeo em hardware em conjunto com ROS.
-        	\item Avaliar a desempenho com a inclusão do FPGA ao sistema.
-        \end{itemize}
-	\end{alertblock}
-\end{frame}
-}
 
 
 %=================================================================
 % Metodologia
 %=================================================================
 
-
-\section{Metodologia}
+\section{Parte II: Desenvolvimento}
 
 \begin{frame}{Metodologia}
     \begin{alertblock}{Procedimentos Metodológicos}
@@ -294,7 +282,7 @@
 % Cronograma
 %=================================================================
 
-\section{Cronograma}
+\section{Parte III: Resultados}
 
 {
 \metroset{titleformat frame=smallcaps}
