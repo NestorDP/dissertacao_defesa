@@ -101,7 +101,7 @@
 \begin{frame}{Objetivos}
     \begin{alertblock}{Objetivo geral}
     	\begin{itemize}
-    	\item Desenvolver uma solução para estabelecer comunicação entre \textit{Field-Programmable Gate Array - FPGA}, configurado como um coprocessador de vídeo e o \textit{Robot Operating System - ROS}, avaliando o impacto desta aplicação ao sistema.
+    	\item Desenvolver uma solução para estabelecer comunicação entre \textit{Field-Programmable Gate Array - FPGA}, e o \textit{Robot Operating System - ROS}.
     	\end{itemize}
     \end{alertblock}
 \end{frame}
@@ -114,13 +114,16 @@
 \begin{frame}{Objetivos}
 	\begin{alertblock}{Objetivos específicos}
         \begin{itemize}
-        	\item Estudar os assuntos relevantes ao projeto: Verilog HDL, RTOS, Nios II, TCO/IP Stack, ROS.
-        	\item Conhecer com detalhes os protocolos da rede TCP/IP usada para comunicação interna dos nós e serviços ROS.
-        	\item Desenvolver plataforma com Nios II como base para o andamento do projeto.
-        	\item Implementar um sistema operacional de tempo real - RTOS na plataforma base.
-        	\item Estabelecer comunicação entre o ROS e o sistema Nios II (embarcado no FPGA) através da tecnologia Gigabit Ethernet.
-        	\item Testar aplicações de processamento de vídeo em hardware em conjunto com ROS.
-        	\item Avaliar a desempenho com a inclusão do FPGA ao sistema.
+        	\item Estudar teoria dos assuntos relevantes ao projeto: Verilog HDL, Embedded Linx,
+			Cyclone V, TCP/IP Stack, ROS;
+        	\item Estudar conceitos de programação de sockets em liguagem C++;
+        	\item Implementar distribuição Embedded Linux para processador ARM embarcado no
+			SoC Cyclone V da Intel;
+        	\item Implementar distribuição Embedded Linux para processador ARM.
+        	\item Estabelecer comunicação entre o ROS e o Cyclone V, através da tecnologia Gigabit
+			Ethernet;
+        	\item Avaliar o desempenho da rede entre o computador e o protótipo após a inclusão do
+			FPGA ao sistema.
         \end{itemize}
 	\end{alertblock}
 \end{frame}
