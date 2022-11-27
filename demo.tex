@@ -41,9 +41,9 @@
 \begin{frame}{Contextualização}
 	\begin{alertblock}{}
     	\begin{itemize}
-		\setlength\itemsep{1em}
+		\setlength\itemsep{0.7em}
     	\item Projetos em robótica têm exigido maior percepção do ambiente.
-    	\item Maior poder de processamento que demanda maior consumo de energia.
+    	\item Maior poder de processamento demanda maior consumo de energia.
     	\item FPGAs possuem potencial para melhorar desempenho de sistemas computacionais.
     	\item MACs de alta velocidade, processamento paralelo e baixas frequências de trabalho são comuns em FPGA. 
     	\item O uso do FPGA pode contribuir com ganho de poder de processamento associado ao baixo consumo.
@@ -59,8 +59,10 @@
 	\begin{alertblock}{}
     	\begin{itemize}%[label=$\bullet$, itemsep=0.3cm]
 		\setlength\itemsep{1em}
-    	\item Atualmente o framework ROS está se consolidando como o padrão na criação de novas plataformas robóticas
-    	\item Desenvolver   uma solução para estabelecer comunicação entre FPGAe o ROS.
+		\item Apesar de oferecer grande vantagens o FPGA em projetos de robótica é pouco incentivado.
+    	\item Atualmente o framework ROS está se consolidando como o padrão na criação de novas plataformas robóticas.
+    	\item O ROS é considerado um sistema operacional para robôs.
+    	\item Desenvolver uma solução para estabelecer comunicação entre FPGA e o ROS.
     	\end{itemize}
     \end{alertblock}
  \nocite{LwIP,freertosbook,ROSeffect,PDSfpga,NiosIIbook,ROSfpga}
@@ -68,27 +70,29 @@
 
 % Slide PROBLEMA
 %-----------------------------------------------------------------
-{
 \metroset{titleformat frame=smallcaps}
 \begin{frame}[fragile]{Problema}
-	\begin{itemize}%[itemsep=1cm]
-		\item \textbf{Como estabelecer a comunicação entre o ROS e um sistema de processamento de vídeo embarcado em um FPGA? }
-		\item \textbf{O estabelecimento da comunicação entre o FPGA e o ROS e a execução do processamento de vídeo de forma paralela, embarcada em um FPGA, pode melhorar o desempenho do sistema?}
-	\end{itemize}
+	\begin{center}
+		\textbf{Como estabelecer a comunicação entre o ROS e um sistema de processamento auxiliar embarcado em um FPGA? }
+	\end{center}
+
+	\vspace{0.75cm}
+
+	Este problema é o que este trabalho busca resolver, possibilitando assim, o uso de aceleração por hardware através do FPGA, no desenvolvimento de novos projetos de robótica.
+
 \end{frame}
-}
 
 % Slide JUSTIFICATIVA
 %-----------------------------------------------------------------
-\begin{frame}[fragile]{Justificativa}
-    \begin{itemize}
-        \item Nos últimos anos, novas técnicas para construção de robôs têm sido bastante estudadas e a robótica móvel tem recebido grande atenção.
-        \item Busca por maior autonomia, sistemais mais complexos.
-        \item FPGA uma opção para aumento de desempenho computacional, combinado com baixo consumo.
-        \item Poucas pesquisas relacionadas ao tema.
-        \item Reaproveitamento da pesquisa em outros projetos das mais diversas áreas.
-    \end{itemize}
-\end{frame}
+% \begin{frame}[fragile]{Justificativa}
+%     \begin{itemize}
+%         \item Nos últimos anos, novas técnicas para construção de robôs têm sido bastante estudadas e a robótica móvel tem recebido grande atenção.
+%         \item Busca por maior autonomia, sistemais mais complexos.
+%         \item FPGA uma opção para aumento de desempenho computacional, combinado com baixo consumo.
+%         \item Poucas pesquisas relacionadas ao tema.
+%         \item Reaproveitamento da pesquisa em outros projetos das mais diversas áreas.
+%     \end{itemize}
+% \end{frame}
 
 % Slide OBJETIVO GERAL
 %-----------------------------------------------------------------
