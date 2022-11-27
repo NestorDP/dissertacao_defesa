@@ -2,18 +2,15 @@
 
 \usetheme[progressbar=frametitle]{metropolis}
 \usepackage{appendixnumberbeamer}
-
 \usepackage{booktabs}
 \usepackage[scale=2]{ccicons}
-
 \usepackage{pgfplots}
 \usepgfplotslibrary{dateplot}
-
-
 \usepackage{xspace}
 \newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
 
-\title{Desenvolvimento de um coprocessador de vídeo em FPGA para integração com o Robot Operating System - ROS}
+
+\title{Comunicação entre Robot Operating System - ROS e SoC com FPGA integrado}
 \subtitle{Universidade Federal da Bahia\\
             Programa de Pós-Graduação em Engenharia Elétrica}
 \date{\today}
@@ -21,9 +18,6 @@
 \author{Autor: Nestor Dias Pereira Neto}
 \institute{Salvador, 5 de dezembro de 2022}
 \titlegraphic{\hfill\includegraphics[height=1.85cm]{imagens/logo.png}}
-
-
-
 
 
 \begin{document}
@@ -41,40 +35,48 @@
 %=================================================================
 \section{Introdução}
 
-% Slide CONTEXTUALIZAÇÃO
+% Slide CONTEXTUALIZAÇÃO I
 %-----------------------------------------------------------------
-{
 \metroset{titleformat frame=smallcaps}
-\begin{frame}[fragile]{Contextualização}
-    \begin{itemize}
-      \item ROS um pseudo sistema operacional para robótica.
-      
-      \item Proporciona reutilização de um grande número de nós já desenvolvidos e testados por terceiros.
-      
-      \item Pode-se criar novos sistemas completos apenas gerenciando esses nós na rede interna do ROS.
-      
-      \item O número de pacotes para o ROS cresceu em uma taxa muito rápida, desde o ano de seu lançamento, 2007, até 2012 o ROS aumentou de 1 para 3699 pacotes.
-    \end{itemize}
-
+\begin{frame}{Contextualização}
+	\begin{alertblock}{}
+    	\begin{itemize}
+		\setlength\itemsep{1em}
+    	\item Projetos em robótica têm exigido maior percepção do ambiente.
+    	\item Maior poder de processamento que demanda maior consumo de energia.
+    	\item FPGAs possuem potencial para melhorar desempenho de sistemas computacionais.
+    	\item MACs de alta velocidade, processamento paralelo e baixas frequências de trabalho são comuns em FPGA. 
+    	\item O uso do FPGA pode contribuir com ganho de poder de processamento associado ao baixo consumo.
+    	\end{itemize}
+    \end{alertblock}
  \nocite{LwIP,freertosbook,ROSeffect,PDSfpga,NiosIIbook,ROSfpga}
 \end{frame}
-}
 
+% Slide CONTEXTUALIZAÇÃO II
+%-----------------------------------------------------------------
+\metroset{titleformat frame=smallcaps}
+\begin{frame}{Contextualização}
+	\begin{alertblock}{}
+    	\begin{itemize}%[label=$\bullet$, itemsep=0.3cm]
+		\setlength\itemsep{1em}
+    	\item Atualmente o framework ROS está se consolidando como o padrão na criação de novas plataformas robóticas
+    	\item Desenvolver   uma solução para estabelecer comunicação entre FPGAe o ROS.
+    	\end{itemize}
+    \end{alertblock}
+ \nocite{LwIP,freertosbook,ROSeffect,PDSfpga,NiosIIbook,ROSfpga}
+\end{frame}
 
 % Slide PROBLEMA
 %-----------------------------------------------------------------
 {
 \metroset{titleformat frame=smallcaps}
 \begin{frame}[fragile]{Problema}
-	\begin{itemize}
+	\begin{itemize}%[itemsep=1cm]
 		\item \textbf{Como estabelecer a comunicação entre o ROS e um sistema de processamento de vídeo embarcado em um FPGA? }
-	\end{itemize}
-	\begin{itemize}
 		\item \textbf{O estabelecimento da comunicação entre o FPGA e o ROS e a execução do processamento de vídeo de forma paralela, embarcada em um FPGA, pode melhorar o desempenho do sistema?}
 	\end{itemize}
 \end{frame}
 }
-
 
 % Slide JUSTIFICATIVA
 %-----------------------------------------------------------------
@@ -87,9 +89,6 @@
         \item Reaproveitamento da pesquisa em outros projetos das mais diversas áreas.
     \end{itemize}
 \end{frame}
-
-
-
 
 % Slide OBJETIVO GERAL
 %-----------------------------------------------------------------
@@ -231,7 +230,7 @@
 \metroset{titleformat frame=smallcaps}
 \begin{frame}{Cronograma}
 	\begin{alertblock}{Metas físicas}
-        \begin{enumerate}
+        \begin{enumerate}[1.]
         	\item Levantamento bibliográfico sobre os assuntos mais relevantes do projeto: ROS, Nios II, Verilog HDL, RTOS, TCP/IP Stack, Sockets.
         	\item Estudo detalhado do protocolo de comunicação entre os nós no ROS.
         	\item Desenvolvimento do sistema base do Nios II no Platform Designer.
