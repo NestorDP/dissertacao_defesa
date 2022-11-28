@@ -9,6 +9,8 @@
 \usepackage{xspace}
 \newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
 
+\usepackage{ragged2e}
+
 
 \title{Comunicação entre Robot Operating System - ROS e SoC com FPGA integrado}
 \subtitle{Universidade Federal da Bahia\\
@@ -75,11 +77,10 @@
 	\begin{center}
 		\textbf{Como estabelecer a comunicação entre o ROS e um sistema de processamento auxiliar embarcado em um FPGA? }
 	\end{center}
-
 	\vspace{0.75cm}
-
-	Este problema é o que este trabalho busca resolver, possibilitando assim, o uso de aceleração por hardware através do FPGA no desenvolvimento de novos projetos de robótica.
-
+	\begin{justify}
+		Este problema é o que este trabalho busca resolver, possibilitando assim, o uso de aceleração por hardware através do FPGA no desenvolvimento de novos projetos de robótica.
+	\end{justify}
 \end{frame}
 
 % Slide JUSTIFICATIVA
@@ -99,6 +100,7 @@
 \metroset{titleformat frame=smallcaps}
 \begin{frame}{Objetivos}
     \begin{alertblock}{Objetivo geral}
+		\vspace{0.25cm}
     	\begin{itemize}
     	\item Desenvolver uma solução para estabelecer comunicação entre \textit{Field-Programmable Gate Array - FPGA}, e o \textit{Robot Operating System - ROS}.
     	\end{itemize}
@@ -131,26 +133,86 @@
 %=================================================================
 \section{Parte I: Referenciais Teórico}
 
+% Slide SYSTEM-ON-CHIP
+%-----------------------------------------------------------------
 \metroset{titleformat frame=smallcaps}
 \begin{frame}{Cyclone V SoC-FPGA}
-	Para alcançar o objetivo desta pesquisa será necessário desenvolver um sistema, configurado em FPGA, que seja capaz de conectar-se a uma rede TCP/IP. O sistema contará com:
-	\begin{itemize}
-		\item Soft processor Nios II;
-		\item Sistema operacional de tempo real - RTOS;
-		\item Biblioteca TCP/IP stack.
-	\end{itemize}
+	\begin{alertblock}{System-on-Chip}
+		\vspace{0.1cm}
+		\begin{justify}
+			SoC é um acrônimo de \textit{System-on-a-Chip} ou apenas \textit{System on Chip}. Um SoC pode combinar diferentes elementos, em diferentes configurações, para formar um sistema completo.
+		\end{justify}
+		
+		\begin{figure}[h]
+			%\caption{{\footnotesize SoC genérico}}
+			\begin{center}
+				\includegraphics[scale=0.38]{imagens/basicsoc.png}\\
+				{\footnotesize \textbf{Fonte:}}
+			\end{center}
+			\label{fig:SoC}
+		\end{figure}
+	\end{alertblock}
 \end{frame}
+
+% Slide FAMÍLIA CYCLONE V
+%-----------------------------------------------------------------
+\metroset{titleformat frame=smallcaps}
+\begin{frame}{Cyclone V SoC-FPGA}
+	\begin{alertblock}{Família Cyclone V SoC-FPGA Intel}
+		\vspace{0.1cm}
+		\begin{justify}
+			A Intel fornece uma linha de produtos classificados como SoC-FPGA, os quais se aracterizam por possuir um rede de FPGA integrados a um processador ARM Cortex A9.
+		\end{justify}
+		\begin{figure}[h]
+			%\caption{{\footnotesize SoC genérico}}
+			\begin{center}
+				\includegraphics[scale=0.29]{imagens/socfpga.png}\\
+				{\footnotesize \textbf{Fonte:}}
+			\end{center}
+			\label{fig:SoC}
+		\end{figure}
+	\end{alertblock}
+\end{frame}
+
+% Slide INTERFACES HPS-FPGA
+%-----------------------------------------------------------------
+\metroset{titleformat frame=smallcaps}
+\begin{frame}{Cyclone V SoC-FPGA}
+	\begin{alertblock}{Interfaces HPS-FPGA}
+		\vspace{0.1cm}
+		\begin{justify}
+			Esta estratégia de interconexão entre o HPS e o FPGA do Cyclone V em um único
+			circuito integrado oferece.
+		\end{justify}
+		\begin{itemize}
+        	\item Largura de banda de pico de mais de 100 Gbps;
+        	\item Coerência de dados integrada;
+        	\item Significativa economia de energia do sistema, eliminando caminhos de E/S externos
+			entre o processador e o FPGA.
+        \end{itemize}
+	\end{alertblock}
+\end{frame}
+
+
 
 \metroset{titleformat frame=smallcaps}
 \begin{frame}{Robot Operating System - ROS}
-	Para alcançar o objetivo desta pesquisa será necessário desenvolver um sistema, configurado em FPGA, que seja capaz de conectar-se a uma rede TCP/IP. O sistema contará com:
-	\begin{itemize}
-		\item Soft processor Nios II;
-		\item Sistema operacional de tempo real - RTOS;
-		\item Biblioteca TCP/IP stack.
-	\end{itemize}
+	\begin{alertblock}{Família Cyclone V SoC-FPGA}
+		\vspace{0.1cm}
+		\begin{justify}
+			A Intel fornece uma linha de produtos classificados como SoC-FPGA, os quais se aracterizam por possuir um rede de FPGA integrados a um processador ARM.
+		\end{justify}
+		
+		\begin{figure}[h]
+			%\caption{{\footnotesize SoC genérico}}
+			\begin{center}
+				\includegraphics[scale=0.29]{imagens/socfpga.png}\\
+				{\footnotesize \textbf{Fonte:}}
+			\end{center}
+			\label{fig:SoC}
+		\end{figure}
+	\end{alertblock}
 \end{frame}
-
 %=================================================================
 % PARTE II: DESENVOLVIMENTO
 %=================================================================
