@@ -10,6 +10,7 @@
 \newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
 
 \usepackage{ragged2e}
+\usepackage{multirow}
 
 
 \title{Comunicação entre Robot Operating System - ROS e SoC com FPGA integrado}
@@ -128,10 +129,15 @@
 \end{frame}
 
 
+
+
 %=================================================================
 % Parte I: Referenciais Teórico
 %=================================================================
 \section{Parte I: Referenciais Teórico}
+
+
+
 
 %*****************************************************************
 % CAPITULO I
@@ -204,12 +210,36 @@
 \metroset{titleformat frame=smallcaps}
 \begin{frame}{Cyclone V SoC-FPGA}
 	\begin{alertblock}{Processador ARM Cortex-A9}
-		\vspace{0.1cm}
-		\begin{justify}
-			A Intel fornece uma linha de produtos classificados como SoC-FPGA, os quais se aracterizam por possuir um rede de FPGA integrados a um processador ARM.
-		\end{justify}
-		
+		%\vspace{0.1cm}
+		\begin{itemize}
+			\item É uma linha de processadores ARM de uso geral, otimizados para alcançarem maior desempenho aliado a um baixo consumo.
 
+			\item Possue estrutura interna configuravel, o que oferece flexibilidade ideal para o desenvolvimento de um novo SoC.
+		\end{itemize}
+
+		\begin{table}[ht]
+			\begin{center}    
+				\begin{tabular}{ll}
+				\hline
+				{\footnotesize Arquitetura}     & {\footnotesize Armv7-A}                     \\ \hline 
+				{\footnotesize Multicore}       & {\footnotesize 1-4 cores}                   \\ \hline 
+				\multirow{2}{*}{{\footnotesize 
+				Suporte ISA}}					& {\footnotesize Extensão DSP}				  \\ \cline{2-2} 
+												& {\footnotesize Ponto Flutuante (Opcional)}  \\ \hline 
+				{\footnotesize MMU}    			& {\footnotesize Armv7 MMU}       			  \\ \hline 
+				\multirow{2}{*}{{\footnotesize 
+				Caracteristicas}} 				& \begin{tabular}[c]{@{}l@{}}{\footnotesize 
+												  Arquitetura flexisível com caches 
+												  configuráveis}\end{tabular}           	  \\ \cline{2-2}
+												& \begin{tabular}[c]{@{}l@{}}{\footnotesize 
+												  Desempenho 50\% maior do que o Cortex-A8}
+												  \end{tabular}   			 				  \\ \hline
+				\end{tabular}
+				\\
+				\vspace{0.2cm}
+				{\footnotesize \textbf{Fonte:} }
+			\end{center}\label{tab:cortexA9config}
+		\end{table}
 	\end{alertblock}
 \end{frame}
 
@@ -217,13 +247,15 @@
 %-----------------------------------------------------------------
 \metroset{titleformat frame=smallcaps}
 \begin{frame}{Cyclone V SoC-FPGA}
-	\begin{alertblock}{\textit{Fild-Programmable Gate Array-FPGA}}
-		\vspace{0.1cm}
-		\begin{justify}
-			A Intel fornece uma linha de produtos classificados como SoC-FPGA, os quais se aracterizam por possuir um rede de FPGA integrados a um processador ARM.
-		\end{justify}
-		
-
+	\begin{alertblock}{Fild-Programmable Gate Array-FPGA}
+		\vspace{0.25cm}
+		\begin{itemize}
+			\setlength\itemsep{1em}
+			\item Dispositivos semicondutores construídos através de uma matriz de blocos lógicos configuráveis, os CLBs.
+			\item Interconectáveis a partir de conexões Programáveis.
+			\item Hardware configuravel pelo usuário.
+			\item Poderosas ferramentas de prototipagem.
+		\end{itemize}
 	\end{alertblock}
 \end{frame}
 
@@ -231,15 +263,89 @@
 %-----------------------------------------------------------------
 \metroset{titleformat frame=smallcaps}
 \begin{frame}{Cyclone V SoC-FPGA}
-	\begin{alertblock}{\textit{Hardware Processor System}}
+	\begin{alertblock}{Hardware Processor System}
 		\vspace{0.1cm}
 		\begin{justify}
-			A Intel fornece uma linha de produtos classificados como SoC-FPGA, os quais se aracterizam por possuir um rede de FPGA integrados a um processador ARM.
+			 A família Cyclone V SoC-FPGA é composta por duas partições, uma malha de FPGA e um \textit{Hard Processor System} (HPS). Os principais módulos do HPS são:
 		\end{justify}
-		
-
+		\begin{itemize}
+			%\setlength\itemsep{0.6em}
+			\item \textit{Microprocessador Unit} (MPU), subsistema com um ou dois ARM Cortex-A9.
+			\item Controladores de memória Flash.
+			\item Controladores de SDRAM.
+			\item Sistema de interconexão.
+			\item \textit{On-chip memory}.
+			\item \textit{Phase-locked loops} (PLLs).
+		\end{itemize}
 	\end{alertblock}
 \end{frame}
+
+% Slide ARDWARE PROCESSOR SYSTEM II
+%-----------------------------------------------------------------
+\metroset{titleformat frame=smallcaps}
+\begin{frame}{Cyclone V SoC-FPGA}
+	\begin{alertblock}{Hardware Processor System: FPGA Manager}
+		\begin{columns}
+			\column{.44\textwidth}
+			\begin{alertblock}{}
+				\begin{itemize}
+					\setlength\itemsep{0.8em}
+					\item Configuração do FPGA.
+					\item 32 sinais de uso geral.
+					\item Status do FPGA.
+					\item Interrupções para o HPS a partir do FPGA.
+					\item Resetar o FPGA.
+				\end{itemize}
+			\end{alertblock}
+			\column{.66\textwidth}
+			\begin{figure}[h]
+				%\caption{ROS Master}
+				\begin{center}
+					\includegraphics[scale=0.18]{imagens/fpgamanager.png}\\
+					{\footnotesize \textbf{Fonte:}}
+				\end{center}
+				\label{fig:fpgamanager}
+			\end{figure}
+		\end{columns}
+	\end{alertblock}
+\end{frame}
+
+% Slide ARDWARE PROCESSOR SYSTEM III
+%-----------------------------------------------------------------
+\metroset{titleformat frame=smallcaps}
+\begin{frame}{Cyclone V SoC-FPGA}
+	\begin{alertblock}{Hardware Processor System: HPS-FPGA Bridge}
+		\begin{figure}[h]
+			%\caption{ROS Master}
+			\begin{center}
+				\includegraphics[scale=0.21]{imagens/hps-fpga_bridge.png}\\
+				{\footnotesize \textbf{Fonte:}}
+			\end{center}
+			\label{fig:bridge}
+		\end{figure}
+	\end{alertblock}
+\end{frame}
+
+% Slide ARDWARE PROCESSOR SYSTEM IV
+%-----------------------------------------------------------------
+\metroset{titleformat frame=smallcaps}
+\begin{frame}{Cyclone V SoC-FPGA}
+	\begin{alertblock}{Hardware Processor System: Cortex A9 MPU}
+		%\vspace{0.1cm}
+		\begin{justify}
+			A \textit{Microprocessor Unit Subsystem} (MPU) presentes SoCs da família Cyclone V incluem um Arm Cortex-A9 MPCore, com processador de uso geral de 32 bits com um ou dois núcleos.
+		\end{justify}
+		\begin{figure}[h]
+			%\caption{{\footnotesize SoC genérico}}
+			\begin{center}
+				\includegraphics[scale=0.2]{imagens/mpusubsystem.png}\\
+				{\footnotesize \textbf{Fonte:}}
+			\end{center}
+			\label{fig:cycloneV}
+		\end{figure}
+	\end{alertblock}
+\end{frame}
+
 
 % Slide KIT DE DESENVOLVIMENTO
 %-----------------------------------------------------------------
@@ -316,10 +422,15 @@
 \end{frame}
 
 
+
+
 %=================================================================
 % PARTE II: DESENVOLVIMENTO
 %=================================================================
 \section{Parte II: Desenvolvimento}
+
+
+
 
 \begin{frame}{Metodologia}
     \begin{alertblock}{Procedimentos Metodológicos}
@@ -396,11 +507,15 @@
 }
 
 
-%=================================================================
-% RESULTADOS
-%=================================================================
 
+
+%=================================================================
+% PARTE III:RESULTADOS
+%=================================================================
 \section{Parte III: Resultados}
+
+
+
 
 {
 \metroset{titleformat frame=smallcaps}
