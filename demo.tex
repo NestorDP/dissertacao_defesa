@@ -331,18 +331,20 @@
 \metroset{titleformat frame=smallcaps}
 \begin{frame}{Cyclone V SoC-FPGA}
 	\begin{alertblock}{Hardware Processor System: Cortex A9 MPU}
-		%\vspace{0.1cm}
-		\begin{justify}
-			A \textit{Microprocessor Unit Subsystem} (MPU) presentes SoCs da família Cyclone V incluem um Arm Cortex-A9 MPCore, com processador de uso geral de 32 bits com um ou dois núcleos.
-		\end{justify}
-		\begin{figure}[h]
-			%\caption{{\footnotesize SoC genérico}}
-			\begin{center}
-				\includegraphics[scale=0.2]{imagens/mpusubsystem.png}\\
-				{\footnotesize \textbf{Fonte:}}
-			\end{center}
-			\label{fig:cycloneV}
-		\end{figure}
+		\begin{columns}
+			%\hspace{0.1cm}
+			\column{.4\textwidth}
+			O \textit{Microprocessor Unit Subsystem} (MPU) presentes SoCs da família Cyclone V incluem um Arm Cortex-A9 MPCore, com processador de uso geral de 32 bits com um ou dois núcleos.
+			\column{.6\textwidth}
+			\begin{figure}[h]
+				%\caption{{\footnotesize SoC genérico}}
+				\begin{center}
+					\includegraphics[scale=0.217]{imagens/mpusubsystem.png}\\
+					{\footnotesize \textbf{Fonte:}}
+				\end{center}
+				\label{fig:cycloneV}
+			\end{figure}
+		\end{columns}
 	\end{alertblock}
 \end{frame}
 
@@ -352,15 +354,16 @@
 \metroset{titleformat frame=smallcaps}
 \begin{frame}{Cyclone V SoC-FPGA}
 	\begin{alertblock}{Kit de desenvolvimento DE10-nano}
-		\vspace{0.1cm}
-		\begin{justify}
-			A Intel fornece uma linha de produtos classificados como SoC-FPGA, os quais se aracterizam por possuir um rede de FPGA integrados a um processador ARM.
-		\end{justify}
-		
-
+		\begin{figure}[h]
+			%\caption{ROS Master}
+			\begin{center}
+				\includegraphics[scale=1.45]{imagens/de10nano.png}\\
+				{\footnotesize \textbf{Fonte:}}
+			\end{center}
+			\label{fig:de10-nano}
+		\end{figure}
 	\end{alertblock}
 \end{frame}
-
 %*****************************************************************
 % CAPITULO II
 %*****************************************************************
@@ -372,7 +375,7 @@
 	\begin{alertblock}{Um sistema operacional para robôs}
 		\vspace{0.1cm}
 		\begin{justify}
-			A Intel fornece uma linha de produtos classificados como SoC-FPGA, os quais se aracterizam por possuir um rede de FPGA integrados a um processador ARM.
+			``O Robot Operating System (ROS) é um conjunto de bibliotecas de software e ferramentas que te auxiliam na construção de aplicações em robótica. De \textit{drivers} ao estado da arte de algoritmos, e com poderosas ferramentas de desenvolvimento, ROS tem o que você precisa para seu próximo projeto de robótica. E tudo é open source'' 
 		\end{justify}
 		
 
@@ -383,13 +386,16 @@
 %-----------------------------------------------------------------
 \metroset{titleformat frame=smallcaps}
 \begin{frame}{\textit{Robot Operating System-ROS}}
-	\begin{alertblock}{Vantagens do ROS}
-		\vspace{0.1cm}
-		\begin{justify}
-			A Intel fornece uma linha de produtos classificados como SoC-FPGA, os quais se aracterizam por possuir um rede de FPGA integrados a um processador ARM.
-		\end{justify}
-		
-
+	\begin{alertblock}{Vantagens do ROS: Tópico}
+		\vspace{0.2cm}
+		\begin{itemize}
+			\setlength\itemsep{0.7em}
+			\item \textbf{Recursos Nativos:} O ROS oferece, de forma nativa, muitos recursos prontos,
+			testados e validados pela comunidade.
+			\item \textbf{Ferramentas de desenvolvimento:} O ROS é disponibilizado com uma grande quantidade de ferramentas para debugging, visualização, incluindo ferramentas para simulação.
+			\item \textbf{Suporte a sensores e atuadores:} Muitos dos sensores e atuadores usados na robótica já são suportados pelo ROS e o número de dispositivos compatíveis aumenta a cada ano.
+			\item \textbf{Múltiplas linguagens:} O framework ROS pode ser programado em algumas linguagens de programação modernas.
+		\end{itemize}
 	\end{alertblock}
 \end{frame}
 
@@ -398,29 +404,61 @@
 \metroset{titleformat frame=smallcaps}
 \begin{frame}{\textit{Robot Operating System-ROS}}
 	\begin{alertblock}{Sistema de arquivos ROS}
-		\vspace{0.1cm}
-		\begin{justify}
-			A Intel fornece uma linha de produtos classificados como SoC-FPGA, os quais se aracterizam por possuir um rede de FPGA integrados a um processador ARM.
-		\end{justify}
-		
-
+		\vspace{0.2cm}
+		\begin{itemize}
+			\setlength\itemsep{0.9em}
+			\item \textbf{Pacotes:} Pacotes são a unidade de software principal do ROS.
+			\item \textbf{Manifesto do pacote:} O arquivo package.xml é conhecido como manifesto do	pacote, ele fornece os metadados a respeito do pacotes.
+			\item \textbf{Arquivo .msg:} É o arquivo de descrição de um tipo de mensagem.
+			\item \textbf{Arquivo .srv:} É o arquivo de descrição de um tipo de serviço.
+			\item \textbf{Repositórios:} Pacotes ROS são compartilhados usando algum tipo de sistema de	controle de versão, como o git.
+		\end{itemize}
 	\end{alertblock}
 \end{frame}
 
-% Slide COMPONENTES ROS
+% Slide COMPONENTES ROS TOPIC
 %-----------------------------------------------------------------
 \metroset{titleformat frame=smallcaps}
 \begin{frame}{\textit{Robot Operating System-ROS}}
-	\begin{alertblock}{Componentes ROS}
+	\begin{alertblock}{Componentes ROS: Tópicos ROS}
 		\vspace{0.1cm}
-		\begin{justify}
-			A Intel fornece uma linha de produtos classificados como SoC-FPGA, os quais se aracterizam por possuir um rede de FPGA integrados a um processador ARM.
-		\end{justify}
-		
-
+		\begin{figure}[h]
+			%\caption{ROS Master}
+			\begin{center}
+				\includegraphics[scale=0.43]{imagens/rostopic.png}\\
+				{\footnotesize \textbf{Fonte:}}
+			\end{center}
+			\label{fig:topico}
+		\end{figure}
 	\end{alertblock}
 \end{frame}
 
+% Slide COMPONENTES ROS MASTER
+%-----------------------------------------------------------------
+\metroset{titleformat frame=smallcaps}
+\begin{frame}{\textit{Robot Operating System-ROS}}
+	\begin{alertblock}{Componentes ROS: ROS Master}
+		\vspace{0.7cm}
+		\begin{figure}[h]
+			%\caption{ROS Master}
+			\begin{center}
+				\includegraphics[scale=0.43]{imagens/rosmaster.png}\\
+				{\footnotesize \textbf{Fonte:}}
+			\end{center}
+			\label{fig:master}
+		\end{figure}
+	\end{alertblock}
+\end{frame}
+
+% Slide COMPONENTES ROS TOPIC
+%-----------------------------------------------------------------
+\metroset{titleformat frame=smallcaps}
+\begin{frame}{\textit{Robot Operating System-ROS}}
+	\begin{alertblock}{Componentes ROS: Parâmetros ROS}
+		\vspace{0.1cm}
+
+	\end{alertblock}
+\end{frame}
 
 
 
