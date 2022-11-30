@@ -472,84 +472,76 @@
 %=================================================================
 \section{Parte II: Desenvolvimento}
 
+%*****************************************************************
+% CAPITULO I ARQUITETURA
+%*****************************************************************
 
-
-
-\begin{frame}{Metodologia}
-    \begin{alertblock}{Procedimentos Metodológicos}
-        A pesquisa será realizada em duas fases:
-        %\metroset{block=fill}
-        \begin{block}{Primeira fase:}
+% Slide COMPONENTES DO SISTEMA
+%-----------------------------------------------------------------
+\begin{frame}{Arquitetura do Sistema}
+    \begin{alertblock}{}
+		%\vspace{0.4cm}
+        \metroset{block=fill}
+        \begin{block}{Programação de rede:}
             \begin{itemize}
-                \item Levantamento de informações teóricas sobre as tecnologias relacionadas com o tema.
+                \item Efetuar programação de sockets e bibliotecas específicas para trabalho em redes.
             \end{itemize}
         \end{block}
-    
-        \begin{block}{Segunda fase}
+		\vspace{0.25cm}
+        \begin{block}{Aplicação ROS:}
             \begin{itemize}
-                \item Serão desenvolvidos procedimentos, técnicas, algoritmos, circuitos e de todos os procedimentos práticos necessários para alcançar o objetivo da pesquisa.
+                \item Desenvolver um pacote ROS para disponibilizar os dados recebidos dos outros pacotes ROS do sistema para o SoC.
+            \end{itemize}
+        \end{block}
+		\vspace{0.25cm}
+		\begin{block}{Aplicação HPS-SoC:}
+            \begin{itemize}
+                \item Estabelecer a comunicação entre a interface de rede da placa E10-nano através de	um programa executado no HPS do SoC, mantendo uma conexão entre o HPS e o FPGA.
             \end{itemize}
         \end{block}
     \end{alertblock}
-
-  
 \end{frame}
 
-{
+
+% Slide CLIENTE-SERVIDOR
+%-----------------------------------------------------------------
+\begin{frame}{Arquitetura do Sistema}
+    \begin{alertblock}{Modelo cliente-servidor}
+		\vspace{0.2cm}
+		\begin{itemize}
+			\item A comunicação entre o \textit{host} e a placa DE10-nano através de uma rede gigabit.
+			\item Possui estrutura que permite dividir o esforço computacional.
+			\item Contribui de forma significativa para a modularização do sistema.
+		\end{itemize}
+		\begin{figure}[h]
+			%\caption{ROS Master}
+			\begin{center}
+				\includegraphics[scale=0.42]{imagens/arquitetura_geral.png}\\
+				{\footnotesize \textbf{Fonte:}}
+			\end{center}
+			\label{fig:arquitetura}
+		\end{figure}
+	\end{alertblock}
+\end{frame}
+
+
+% Slide CLIENTE-SERVIDOR
+%-----------------------------------------------------------------
 \metroset{titleformat frame=smallcaps}
-\begin{frame}{Metodologia}
-	\begin{alertblock}{Plano de trabalho}
+\begin{frame}{Arquitetura do Sistema}
+	\begin{alertblock}{Biblioteca de comunicação - libinterfacesocket}
+		\vspace{0.2cm}
 	    \begin{itemize}
-	        \item Será apresentado com detalhes nas metas físicas na seção cronograma.
+			\setlength\itemsep{0.7em}
+	        \item Para manter o padrão do desenvolvimentos dos códigos tanto do cliente quanto do servidor.
+	        \item Classe foi desenvolvida como um módulo à parte e compilada como uma biblioteca estática.
+	        \item Alterações ou correções de erros, sem alterações nos códigos do servidor ou do cliente.
+	        \item Programação da biblioteca foi realizada com base em sockets.
+	        \item A programação de sockets em C++ possibilita um alto nível de otimização da comunicação.
+	        \item Código fonte disponível no Github.
 	    \end{itemize}
 	\end{alertblock}
-	
-	\begin{alertblock}{Materiais e infra-estrutura disponível}
-	    \begin{itemize}
-	        \item Para desenvolvimento do trabalho será utilizado o kit de desenvolvimento DE2-115
-        da Terasic, que conta com um FPGA Intel EP4CE115 da família Cyclone IV. Inicialmente
-        os teste com o ROS serão no ambiente de simulação Gazebo.
-        \end{itemize}
-	\end{alertblock}
-	
 \end{frame}
-}
-
-{
-\metroset{titleformat frame=smallcaps}
-\begin{frame}{Metodologia}
-	\begin{alertblock}{Matérias cursadas}
-	Todos os créditos obrigatórios com disciplinas já foram concluídos.
-	    \begin{itemize}
-	        \item Processamento Digitais de Sinais (PPGESP IFBA).
-	        \item Processadores Digitais de Sinais - 8,5.
-	        \item Inteligência Artificial - 8,0.
-	        \item Robótica Móvel - 9,5.
-	        \item Processamento Estatístico de Sinais - 8,4.
-	        \item Componentes de Processadores Digitais de Sinais - 8,1.
-	    \end{itemize}
-	\end{alertblock}
-	
-\end{frame}
-}
-
-{
-\metroset{titleformat frame=smallcaps}
-\begin{frame}{Metodologia}
-	\begin{alertblock}{Atividades desenvolvidas}
-	Algumas atividades já foram concluídas.
-	    \begin{itemize}
-	        \item Revisão bibliográfica, estudo de trabalhos relacionado.
-	        \item Conhecimento das ferramentas utilizadas.
-	        \item Testes com sistema Nios II.
-	        \item Implementação do FreeRTOS no NiosII.
-	    \end{itemize}
-	\end{alertblock}
-	
-\end{frame}
-}
-
-
 
 
 %=================================================================
@@ -560,7 +552,7 @@
 
 
 
-{
+
 \metroset{titleformat frame=smallcaps}
 \begin{frame}{Cronograma}
 	\begin{alertblock}{Metas físicas}
@@ -576,9 +568,9 @@
         \end{enumerate}
 	\end{alertblock}
 \end{frame}
-}
 
-{
+
+
 \metroset{titleformat frame=smallcaps}
 \begin{frame}{Cronograma}
 
@@ -614,7 +606,7 @@
     	\label{tab:crono}
     \end{table}
 \end{frame}
-}
+
 
 %{\setbeamercolor{palette primary}{fg=black, bg=yellow}
 %\begin{frame}[standout]
