@@ -719,27 +719,69 @@
 
 % Slide RESULTADOS
 %-----------------------------------------------------------------
-% \metroset{titleformat frame=smallcaps}
-% \begin{frame}{Resultados Alcançados}
-% 	\begin{alertblock}{}
-% 		\vspace{0.2cm}
-% 	    \begin{justify}
-% 			Neste trabalho o programa servidor disponibiliza ao cliente a interface com o FPGA presente no SoC. Assim, ao receber o pedido do cliente, o servidor deve ser capaz de enviar os dados vindos do cliente à unidade de processamento embarcada no FPGA e em seguida devolver esses dados já processados ao cliente
-% 	    \end{justify}
-% 	\end{alertblock}
-% \end{frame}
+\metroset{titleformat frame=smallcaps}
+\begin{frame}{Resultados Alcançados}
+    \begin{alertblock}{}
+		%\vspace{0.4cm}
+		\begin{justify}
+			Foram idealizados dois ensaios: o primeiro com o objetivo de testar o fluxo completo de troca de dados entre um nó ROS e o FPGA; o segundo ensaio teve o objetivo de testar um fluxo grande de dados trafegando entre o ROS e o SoC.
+		\end{justify}
+        %\metroset{block=fill}
+        \begin{block}{Teste Comunicação:}
+            \begin{itemize}
+                \item verificar a comunicação completa entre o nó ROS e um IP sendo executado no FPGA.
+                \item foi projetado um circuito simples que	calcula o dobro de um número.
+            \end{itemize}
+        \end{block}
+		\vspace{0.25cm}
+        \begin{block}{Teste Rede:}
+            \begin{itemize}
+                \item testar a sobrecarga de dados na rede e avaliar o seu comportamento.
+                \item \textit{Stream} de vídeo com resolução de 1280x720 em 15 fps.
+            \end{itemize}
+        \end{block}
+    \end{alertblock}
+\end{frame}
+
+% Slide RESULTADOS GRÁFICOS
+%-----------------------------------------------------------------
+\metroset{titleformat frame=smallcaps}
+\begin{frame}{Resultados Alcançados}
+	%\begin{alertblock}{}
+			\begin{figure}[h]
+				%\caption{ROS Master}
+				\begin{center}
+					\includegraphics[scale=0.24]{imagens/speed.jpg}\\
+					% {\footnotesize \textbf{Fonte:}}
+				\end{center}
+				\label{fig:speed}
+			\end{figure}
+
+			\begin{figure}[h]
+				%\caption{ROS Master}
+				\begin{center}
+					\includegraphics[scale=0.19]{imagens/delay.jpg}\\
+					{\footnotesize \textbf{Fonte:}}
+				\end{center}
+				\label{fig:delay}
+			\end{figure}
+
+	%\end{alertblock}
+\end{frame}
 
 % Slide CONCLUSÃO
 %-----------------------------------------------------------------
-% \metroset{titleformat frame=smallcaps}
-% \begin{frame}{Conclusão}
-% 	\begin{alertblock}{}
-% 		\vspace{0.2cm}
-% 	    \begin{justify}
-% 			Neste trabalho o programa servidor disponibiliza ao cliente a interface com o FPGA presente no SoC. Assim, ao receber o pedido do cliente, o servidor deve ser capaz de enviar os dados vindos do cliente à unidade de processamento embarcada no FPGA e em seguida devolver esses dados já processados ao cliente
-% 	    \end{justify}
-% 	\end{alertblock}
-% \end{frame}
+\metroset{titleformat frame=smallcaps}
+\begin{frame}{Conclusão}
+	\begin{alertblock}{}
+		\vspace{0.2cm}
+		\begin{justify}
+			Os resultados alcançados para os dois ensaios foram considerados satisfatórios, apesar de, na transferência das imagens, ter sido observado um pequeno delay, menor do que 10 ms.
+		\end{justify}
+		\vspace{1cm}
+		{\small Trabalho publicado no 28º IBERCHIP Workshop, promovido pela IEEE Circuits and Systems Society - CASS, Santiago no Chile, 2022.}
+	\end{alertblock}
+\end{frame}
 
 % Slide TRABALHOS FUTUROS
 %-----------------------------------------------------------------
@@ -765,11 +807,9 @@
 
 
 \begin{frame}[allowframebreaks]{Referencias}
-
   \bibliography{demo}
   %\bibliographystyle{abbrv}
   \bibliographystyle{acm}
-  
 \end{frame}
 
 \end{document}
