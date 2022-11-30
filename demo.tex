@@ -544,26 +544,30 @@
 \end{frame}
 
 %*****************************************************************
-% CAPITULO I CLIENTE
+% CAPITULO II CLIENTE
 %*****************************************************************
 
 % Slide PACOTE ROS
 %-----------------------------------------------------------------
 \begin{frame}{Pacote ROS (cliente)}
     \begin{alertblock}{}
-		\vspace{0.2cm}
-		\begin{justify}
-			No desenvolvimento de aplicações com ROS deve ser respeitada a estrutura de
-			diretórios de um pacote ROS, portanto o desenvolvimento do cliente deve lever em consideração essa estrutura.
-		\end{justify}
-		\begin{figure}[h]
-			%\caption{ROS Master}
-			\begin{center}
-				\includegraphics[scale=0.3]{imagens/rospackage.png}\\
-				{\footnotesize \textbf{Fonte:}}
-			\end{center}
-			\label{fig:pkg}
-		\end{figure}
+		%\vspace{0.2cm}
+		\begin{columns}
+			\column{.55\textwidth}
+			%\begin{justify}
+				No desenvolvimento de aplicações com ROS deve ser respeitada a estrutura de
+				diretórios de um pacote ROS, portanto o desenvolvimento do cliente deve lever em consideração essa estrutura.
+			%\end{justify}
+			\column{.45\textwidth}
+			\begin{figure}[h]
+				%\caption{ROS Master}
+				\begin{center}
+					\includegraphics[scale=0.4]{imagens/rospackage.png}\\
+					{\footnotesize \textbf{Fonte:}}
+				\end{center}
+				\label{fig:pkg}
+			\end{figure}
+		\end{columns}
 	\end{alertblock}
 \end{frame}
 
@@ -598,7 +602,7 @@
 \end{frame}
 
 %*****************************************************************
-% CAPITULO I CLIENTE
+% CAPITULO III SERVIDOR
 %*****************************************************************
 
 % Slide SERVIDOR
@@ -613,65 +617,98 @@
 	\end{alertblock}
 \end{frame}
 
-% Slide SERVIDOR
+% Slide BOOT
+%-----------------------------------------------------------------
+\begin{frame}{Arquitetura do Sistema}
+    \begin{alertblock}{Processo de BOOT}
+		\vspace{0.2cm}
+		% \begin{itemize}
+		% 	\item A comunicação entre o \textit{host} e a placa DE10-nano através de uma rede gigabit.
+		% 	\item Possui estrutura que permite dividir o esforço computacional.
+		% 	\item Contribui de forma significativa para a modularização do sistema.
+		% \end{itemize}
+		\begin{figure}[h]
+			%\caption{ROS Master}
+			\begin{center}
+				\includegraphics[scale=0.45]{imagens/embeddedLinux.png}\\
+				{\footnotesize \textbf{Fonte:}}
+			\end{center}
+			\label{fig:boot}
+		\end{figure}
+	\end{alertblock}
+\end{frame}
+
+% Slide RSYOCTO
 %-----------------------------------------------------------------
 \metroset{titleformat frame=smallcaps}
 \begin{frame}{Servidor}
-	\begin{alertblock}{}
-		\vspace{0.2cm}
-	    \begin{justify}
-			Neste trabalho o programa servidor disponibiliza ao cliente a interface com o FPGA presente no SoC. Assim, ao receber o pedido do cliente, o servidor deve ser capaz de enviar os dados vindos do cliente à unidade de processamento embarcada no FPGA e em seguida devolver esses dados já processados ao cliente
-	    \end{justify}
+	\begin{alertblock}{Distribuição Linux rsyocto}
+		\vspace{0.1cm}
+		\begin{justify}
+			O rsyocto foi a distribuição distribuição linux escolhida, desenvolvida exclusivamente para SoCs da Intel com FPGA integrado. Algumas das suas caracteristicas são:
+		\end{justify}
+		\begin{itemize}
+			%\setlength\itemsep{0.6em}
+			\item Linux Kernel 5.11.
+			\item Acesso total ao Dual-Core ARM (ARMv7-A) Cortex-A9.
+			\item Configuração da malha FPGA durante o boot e com comandos Linux simples.
+			\item Todas as interfaces entre o HPS e o FPGA estão habilitadas e prontas para uso.
+			\item Ferramentas para interagir com a malha do FPGA a partir das ARM AXI HPS-
+			toFPGA bridges.
+		\end{itemize}
+	\end{alertblock}
+\end{frame}
+
+% Slide INTERFACE SOCKET SERVER
+%-----------------------------------------------------------------
+\begin{frame}{Servidor}
+    \begin{alertblock}{Servidor: Interface socket server}
+		\vspace{0.3cm}
+		\begin{itemize}
+			\item Baixar, compilar e intalar a libinterfacesocket no linux embarcado.
+			\item Mantém uma porta aberta esperando a conexão com o cliente.
+			\item Dados recebidos do cliente são enviados para serem processados pelo FPGA e em seguida devolvidos ao cliente.
+			\item O acesso do servidor ao FPGA é feito através de mapeamento de endereços do
+			linux.
+		\end{itemize}
+		\begin{figure}[h]
+			%\caption{ROS Master}
+			\begin{center}
+				\includegraphics[scale=0.28]{imagens/fluxogramaServidor.png}\\
+				{\footnotesize \textbf{Fonte:}}
+			\end{center}
+			\label{fig:servidor}
+		\end{figure}
 	\end{alertblock}
 \end{frame}
 
 % Slide SERVIDOR
 %-----------------------------------------------------------------
-\metroset{titleformat frame=smallcaps}
 \begin{frame}{Servidor}
-	\begin{alertblock}{}
+    \begin{alertblock}{Servidor: Interface socket server}
 		\vspace{0.2cm}
-	    \begin{justify}
-			Neste trabalho o programa servidor disponibiliza ao cliente a interface com o FPGA presente no SoC. Assim, ao receber o pedido do cliente, o servidor deve ser capaz de enviar os dados vindos do cliente à unidade de processamento embarcada no FPGA e em seguida devolver esses dados já processados ao cliente
-	    \end{justify}
+		\begin{figure}[h]
+			%\caption{ROS Master}
+			\begin{center}
+				\includegraphics[scale=0.24]{imagens/Platiform.png}\\
+				{\footnotesize \textbf{Fonte:}}
+			\end{center}
+			\label{fig:platform}
+		\end{figure}
 	\end{alertblock}
 \end{frame}
 
 % Slide SERVIDOR
 %-----------------------------------------------------------------
-\metroset{titleformat frame=smallcaps}
-\begin{frame}{Servidor}
-	\begin{alertblock}{}
-		\vspace{0.2cm}
-	    \begin{justify}
-			Neste trabalho o programa servidor disponibiliza ao cliente a interface com o FPGA presente no SoC. Assim, ao receber o pedido do cliente, o servidor deve ser capaz de enviar os dados vindos do cliente à unidade de processamento embarcada no FPGA e em seguida devolver esses dados já processados ao cliente
-	    \end{justify}
-	\end{alertblock}
-\end{frame}
-
-% Slide SERVIDOR
-%-----------------------------------------------------------------
-\metroset{titleformat frame=smallcaps}
-\begin{frame}{Servidor}
-	\begin{alertblock}{}
-		\vspace{0.2cm}
-	    \begin{justify}
-			Neste trabalho o programa servidor disponibiliza ao cliente a interface com o FPGA presente no SoC. Assim, ao receber o pedido do cliente, o servidor deve ser capaz de enviar os dados vindos do cliente à unidade de processamento embarcada no FPGA e em seguida devolver esses dados já processados ao cliente
-	    \end{justify}
-	\end{alertblock}
-\end{frame}
-
-% Slide SERVIDOR
-%-----------------------------------------------------------------
-\metroset{titleformat frame=smallcaps}
-\begin{frame}{Servidor}
-	\begin{alertblock}{}
-		\vspace{0.2cm}
-	    \begin{justify}
-			Neste trabalho o programa servidor disponibiliza ao cliente a interface com o FPGA presente no SoC. Assim, ao receber o pedido do cliente, o servidor deve ser capaz de enviar os dados vindos do cliente à unidade de processamento embarcada no FPGA e em seguida devolver esses dados já processados ao cliente
-	    \end{justify}
-	\end{alertblock}
-\end{frame}
+% \metroset{titleformat frame=smallcaps}
+% \begin{frame}{Servidor}
+% 	\begin{alertblock}{}
+% 		\vspace{0.2cm}
+% 	    \begin{justify}
+% 			Neste trabalho o programa servidor disponibiliza ao cliente a interface com o FPGA presente no SoC. Assim, ao receber o pedido do cliente, o servidor deve ser capaz de enviar os dados vindos do cliente à unidade de processamento embarcada no FPGA e em seguida devolver esses dados já processados ao cliente
+% 	    \end{justify}
+% 	\end{alertblock}
+% \end{frame}
 
 
 %=================================================================
@@ -682,39 +719,39 @@
 
 % Slide RESULTADOS
 %-----------------------------------------------------------------
-\metroset{titleformat frame=smallcaps}
-\begin{frame}{Resultados Alcançados}
-	\begin{alertblock}{}
-		\vspace{0.2cm}
-	    \begin{justify}
-			Neste trabalho o programa servidor disponibiliza ao cliente a interface com o FPGA presente no SoC. Assim, ao receber o pedido do cliente, o servidor deve ser capaz de enviar os dados vindos do cliente à unidade de processamento embarcada no FPGA e em seguida devolver esses dados já processados ao cliente
-	    \end{justify}
-	\end{alertblock}
-\end{frame}
+% \metroset{titleformat frame=smallcaps}
+% \begin{frame}{Resultados Alcançados}
+% 	\begin{alertblock}{}
+% 		\vspace{0.2cm}
+% 	    \begin{justify}
+% 			Neste trabalho o programa servidor disponibiliza ao cliente a interface com o FPGA presente no SoC. Assim, ao receber o pedido do cliente, o servidor deve ser capaz de enviar os dados vindos do cliente à unidade de processamento embarcada no FPGA e em seguida devolver esses dados já processados ao cliente
+% 	    \end{justify}
+% 	\end{alertblock}
+% \end{frame}
 
 % Slide CONCLUSÃO
 %-----------------------------------------------------------------
-\metroset{titleformat frame=smallcaps}
-\begin{frame}{Conclusão}
-	\begin{alertblock}{}
-		\vspace{0.2cm}
-	    \begin{justify}
-			Neste trabalho o programa servidor disponibiliza ao cliente a interface com o FPGA presente no SoC. Assim, ao receber o pedido do cliente, o servidor deve ser capaz de enviar os dados vindos do cliente à unidade de processamento embarcada no FPGA e em seguida devolver esses dados já processados ao cliente
-	    \end{justify}
-	\end{alertblock}
-\end{frame}
+% \metroset{titleformat frame=smallcaps}
+% \begin{frame}{Conclusão}
+% 	\begin{alertblock}{}
+% 		\vspace{0.2cm}
+% 	    \begin{justify}
+% 			Neste trabalho o programa servidor disponibiliza ao cliente a interface com o FPGA presente no SoC. Assim, ao receber o pedido do cliente, o servidor deve ser capaz de enviar os dados vindos do cliente à unidade de processamento embarcada no FPGA e em seguida devolver esses dados já processados ao cliente
+% 	    \end{justify}
+% 	\end{alertblock}
+% \end{frame}
 
 % Slide TRABALHOS FUTUROS
 %-----------------------------------------------------------------
-\metroset{titleformat frame=smallcaps}
-\begin{frame}{Estudos futuros}
-	\begin{alertblock}{}
-		\vspace{0.2cm}
-	    \begin{justify}
-			Neste trabalho o programa servidor disponibiliza ao cliente a interface com o FPGA presente no SoC. Assim, ao receber o pedido do cliente, o servidor deve ser capaz de enviar os dados vindos do cliente à unidade de processamento embarcada no FPGA e em seguida devolver esses dados já processados ao cliente
-	    \end{justify}
-	\end{alertblock}
-\end{frame}
+% \metroset{titleformat frame=smallcaps}
+% \begin{frame}{Estudos futuros}
+% 	\begin{alertblock}{}
+% 		\vspace{0.2cm}
+% 	    \begin{justify}
+% 			Neste trabalho o programa servidor disponibiliza ao cliente a interface com o FPGA presente no SoC. Assim, ao receber o pedido do cliente, o servidor deve ser capaz de enviar os dados vindos do cliente à unidade de processamento embarcada no FPGA e em seguida devolver esses dados já processados ao cliente
+% 	    \end{justify}
+% 	\end{alertblock}
+% \end{frame}
 
 
 
