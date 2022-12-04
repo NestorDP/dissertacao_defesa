@@ -16,10 +16,10 @@
 \title{Comunicação entre Robot Operating System - ROS e SoC com FPGA integrado}
 \subtitle{Universidade Federal da Bahia\\
             Programa de Pós-Graduação em Engenharia Elétrica}
-\date{\today}
+%\date{\today}
 \date{Orientador: Prof. Dr. Wagner Luiz Alves de Oliveira\\Coorientador: Prof. Dr. Paulo César Farias}
 \author{Autor: Nestor Dias Pereira Neto}
-\institute{Salvador, 5 de dezembro de 2022}
+\institute{Salvador, 6 de dezembro de 2022}
 \titlegraphic{\hfill\includegraphics[height=1.85cm]{imagens/logo.png}}
 
 
@@ -157,7 +157,7 @@
 			%\caption{{\footnotesize SoC genérico}}
 			\begin{center}
 				\includegraphics[scale=0.395]{imagens/basicsoc.png}\\
-				{\footnotesize \textbf{Fonte:}}
+				%{\footnotesize \textbf{Fonte:}}
 			\end{center}
 			\label{fig:SoC}
 		\end{figure}
@@ -177,7 +177,7 @@
 			%\caption{{\footnotesize SoC genérico}}
 			\begin{center}
 				\includegraphics[scale=0.29]{imagens/socfpga.png}\\
-				{\footnotesize \textbf{Fonte:}}
+				%{\footnotesize \textbf{Fonte:}}
 			\end{center}
 			\label{fig:SoC}
 		\end{figure}
@@ -237,7 +237,7 @@
 				\end{tabular}
 				\\
 				\vspace{0.2cm}
-				{\footnotesize \textbf{Fonte:} }
+				%	{\footnotesize \textbf{Fonte:} }
 			\end{center}\label{tab:cortexA9config}
 		\end{table}
 	\end{alertblock}
@@ -302,7 +302,7 @@
 				%\caption{ROS Master}
 				\begin{center}
 					\includegraphics[scale=0.18]{imagens/fpgamanager.png}\\
-					{\footnotesize \textbf{Fonte:}}
+					%{\footnotesize \textbf{Fonte:}}
 				\end{center}
 				\label{fig:fpgamanager}
 			\end{figure}
@@ -315,16 +315,31 @@
 \metroset{titleformat frame=smallcaps}
 \begin{frame}{Cyclone V SoC-FPGA}
 	\begin{alertblock}{Hardware Processor System: HPS-FPGA Bridge}
-		\begin{figure}[h]
-			%\caption{ROS Master}
-			\begin{center}
-				\includegraphics[scale=0.21]{imagens/hps-fpga_bridge.png}\\
-				{\footnotesize \textbf{Fonte:}}
-			\end{center}
-			\label{fig:bridge}
-		\end{figure}
+		\begin{columns}
+			\column{.44\textwidth}
+			\begin{alertblock}{}
+				\begin{itemize}
+					\setlength\itemsep{0.8em}
+					\item O HPS pode se comunicar com 0 FPGA.
+					\item Podem alcançar larguras de banda superiores a 100Gbps
+					\item O HPS possui três pontes.
+					\item A comunicação funciona nos dois sentidos.
+				\end{itemize}
+			\end{alertblock}
+			\column{.66\textwidth}
+			\begin{figure}[h]
+				%\caption{ROS Master}
+				\begin{center}
+					\includegraphics[scale=0.2]{imagens/hps-fpga_bridge.png}\\
+					%{\footnotesize \textbf{Fonte:}}
+				\end{center}
+				\label{fig:bridge}
+			\end{figure}
+		\end{columns}
 	\end{alertblock}
 \end{frame}
+
+
 
 % Slide ARDWARE PROCESSOR SYSTEM IV
 %-----------------------------------------------------------------
@@ -340,7 +355,7 @@
 				%\caption{{\footnotesize SoC genérico}}
 				\begin{center}
 					\includegraphics[scale=0.217]{imagens/mpusubsystem.png}\\
-					{\footnotesize \textbf{Fonte:}}
+					%{\footnotesize \textbf{Fonte:}}
 				\end{center}
 				\label{fig:cycloneV}
 			\end{figure}
@@ -358,7 +373,7 @@
 			%\caption{ROS Master}
 			\begin{center}
 				\includegraphics[scale=1.45]{imagens/de10nano.png}\\
-				{\footnotesize \textbf{Fonte:}}
+				%{\footnotesize \textbf{Fonte:}}
 			\end{center}
 			\label{fig:de10-nano}
 		\end{figure}
@@ -426,7 +441,7 @@
 			%\caption{ROS Master}
 			\begin{center}
 				\includegraphics[scale=0.41]{imagens/rostopic.png}\\
-				{\footnotesize \textbf{Fonte:}}
+				%{\footnotesize \textbf{Fonte:}}
 			\end{center}
 			\label{fig:topico}
 		\end{figure}
@@ -443,7 +458,7 @@
 			%\caption{ROS Master}
 			\begin{center}
 				\includegraphics[scale=0.43]{imagens/rosmaster.png}\\
-				{\footnotesize \textbf{Fonte:}}
+				%{\footnotesize \textbf{Fonte:}}
 			\end{center}
 			\label{fig:master}
 		\end{figure}
@@ -517,7 +532,7 @@
 			%\caption{ROS Master}
 			\begin{center}
 				\includegraphics[scale=0.42]{imagens/arquitetura_geral.png}\\
-				{\footnotesize \textbf{Fonte:}}
+				%{\footnotesize \textbf{Fonte:}}
 			\end{center}
 			\label{fig:arquitetura}
 		\end{figure}
@@ -563,7 +578,7 @@
 				%\caption{ROS Master}
 				\begin{center}
 					\includegraphics[scale=0.4]{imagens/rospackage.png}\\
-					{\footnotesize \textbf{Fonte:}}
+					%{\footnotesize \textbf{Fonte:}}
 				\end{center}
 				\label{fig:pkg}
 			\end{figure}
@@ -593,7 +608,7 @@
 				%\caption{ROS Master}
 				\begin{center}
 					\includegraphics[scale=0.24]{imagens/fluxogramaCliente.png}\\
-					{\footnotesize \textbf{Fonte:}}
+					%{\footnotesize \textbf{Fonte:}}
 				\end{center}
 				\label{fig:cliente}
 			\end{figure}
@@ -631,7 +646,7 @@
 			%\caption{ROS Master}
 			\begin{center}
 				\includegraphics[scale=0.45]{imagens/embeddedLinux.png}\\
-				{\footnotesize \textbf{Fonte:}}
+				%{\footnotesize \textbf{Fonte:}}
 			\end{center}
 			\label{fig:boot}
 		\end{figure}
@@ -675,7 +690,7 @@
 			%\caption{ROS Master}
 			\begin{center}
 				\includegraphics[scale=0.28]{imagens/fluxogramaServidor.png}\\
-				{\footnotesize \textbf{Fonte:}}
+				%{\footnotesize \textbf{Fonte:}}
 			\end{center}
 			\label{fig:servidor}
 		\end{figure}
@@ -691,7 +706,7 @@
 			%\caption{ROS Master}
 			\begin{center}
 				\includegraphics[scale=0.24]{imagens/Platiform.png}\\
-				{\footnotesize \textbf{Fonte:}}
+				%{\footnotesize \textbf{Fonte:}}
 			\end{center}
 			\label{fig:platform}
 		\end{figure}
@@ -743,30 +758,38 @@
     \end{alertblock}
 \end{frame}
 
-% Slide RESULTADOS GRÁFICOS
+% Slide RESULTADOS GRÁFICOS I
 %-----------------------------------------------------------------
 \metroset{titleformat frame=smallcaps}
 \begin{frame}{Resultados Alcançados}
-	%\begin{alertblock}{}
-			\begin{figure}[h]
-				%\caption{ROS Master}
-				\begin{center}
-					\includegraphics[scale=0.24]{imagens/speed.jpg}\\
-					% {\footnotesize \textbf{Fonte:}}
-				\end{center}
-				\label{fig:speed}
-			\end{figure}
+	\begin{alertblock}{Gráfico velocidade de transmissão}
+		\vspace{0.8cm}
+		\begin{figure}[h]
+			%\caption{ROS Master}
+			\begin{center}
+				\includegraphics[scale=0.3]{imagens/speed.jpg}\\
+				% %{\footnotesize \textbf{Fonte:}}
+			\end{center}
+			\label{fig:speed}
+		\end{figure}
+	\end{alertblock}
+\end{frame}
 
-			\begin{figure}[h]
-				%\caption{ROS Master}
-				\begin{center}
-					\includegraphics[scale=0.19]{imagens/delay.jpg}\\
-					{\footnotesize \textbf{Fonte:}}
-				\end{center}
-				\label{fig:delay}
-			\end{figure}
-
-	%\end{alertblock}
+% Slide RESULTADOS GRÁFICOS II
+%-----------------------------------------------------------------
+\metroset{titleformat frame=smallcaps}
+\begin{frame}{Resultados Alcançados}
+	\begin{alertblock}{Atrasos gerados durante a comunicação}
+		\vspace{0.8cm}
+		\begin{figure}[h]
+			%\caption{ROS Master}
+			\begin{center}
+				\includegraphics[scale=0.23]{imagens/delay.jpg}\\
+				%{\footnotesize \textbf{Fonte:}}
+			\end{center}
+			\label{fig:delay}
+		\end{figure}
+	\end{alertblock}
 \end{frame}
 
 % Slide CONCLUSÃO
