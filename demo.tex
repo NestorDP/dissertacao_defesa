@@ -62,7 +62,7 @@
 	\begin{alertblock}{}
     	\begin{itemize}%[label=$\bullet$, itemsep=0.3cm]
 		\setlength\itemsep{1em}
-		\item Apesar de oferecer grande vantagens o FPGA em projetos de robótica é pouco incentivado.
+		\item Apesar de oferecer grandes vantagens, o FPGA é pouco incentivado em projetos de robótica.
     	\item Atualmente o framework ROS está se consolidando como o padrão na criação de novas plataformas robóticas.
     	\item O ROS é considerado um sistema operacional para robôs.
     	\item Desenvolver uma solução para estabelecer comunicação entre FPGA e o ROS.
@@ -116,7 +116,7 @@
         \begin{itemize}
         	\item Estudar teoria dos assuntos relevantes ao projeto: Verilog HDL, Embedded Linx,
 			Cyclone V, TCP/IP Stack, ROS;
-        	\item Estudar conceitos de programação de sockets em liguagem C++;
+        	\item Estudar conceitos de programação de sockets em lniguagem C++;
         	\item Implementar distribuição Embedded Linux para processador ARM embarcado no
 			SoC Cyclone V da Intel;
         	\item Implementar distribuição Embedded Linux para processador ARM.
@@ -134,7 +134,7 @@
 %=================================================================
 % Parte I: Referenciais Teórico
 %=================================================================
-\section{Parte I: Referenciais Teórico}
+\section{Parte I: Referenciais Teóricos}
 
 
 
@@ -212,9 +212,9 @@
 	\begin{alertblock}{Processador ARM Cortex-A9}
 		%\vspace{0.1cm}
 		\begin{itemize}
-			\item É uma linha de processadores ARM de uso geral, otimizados para alcançarem maior desempenho aliado a um baixo consumo.
+			\item É uma linha de processadores ARM de uso geral, otimizados para alcançar maior desempenho aliado a um baixo consumo.
 
-			\item Possue estrutura interna configuravel, o que oferece flexibilidade ideal para o desenvolvimento de um novo SoC.
+			\item Possue estrutura interna configurável, o que oferece flexibilidade ideal para o desenvolvimento de um novo SoC.
 		\end{itemize}
 
 		\begin{table}[ht]
@@ -251,7 +251,7 @@
 		\vspace{0.25cm}
 		\begin{itemize}
 			\setlength\itemsep{1em}
-			\item Dispositivos semicondutores construídos através de uma matriz de blocos lógicos configuráveis, os CLBs.
+			\item Dispositivos semicondutores construídos através de uma matriz de blocos lógicos configurável, os CLBs.
 			\item Interconectáveis a partir de conexões Programáveis.
 			\item Hardware configuravel pelo usuário.
 			\item Poderosas ferramentas de prototipagem.
@@ -390,7 +390,7 @@
 	\begin{alertblock}{Um sistema operacional para robôs}
 		\vspace{0.1cm}
 		\begin{justify}
-			``O Robot Operating System (ROS) é um conjunto de bibliotecas de software e ferramentas que te auxiliam na construção de aplicações em robótica. De \textit{drivers} ao estado da arte de algoritmos, e com poderosas ferramentas de desenvolvimento, ROS tem o que você precisa para seu próximo projeto de robótica. E tudo é open source'' 
+			``O Robot Operating System (ROS) é um conjunto de bibliotecas de software e ferramentas que te auxiliam na construção de aplicações em robótica. De \textit{drivers} ao estado da arte de algoritmos, e com poderosas ferramentas de desenvolvimento, ROS tem o que você precisa para seu próximo projeto de robótica. E tudo é open source.'' 
 		\end{justify}
 		
 
@@ -526,7 +526,7 @@
 		\begin{itemize}
 			\item A comunicação entre o \textit{host} e a placa DE10-nano através de uma rede gigabit.
 			\item Possui estrutura que permite dividir o esforço computacional.
-			\item Contribui de forma significativa para a modularização do sistema.
+			\item Contribue de forma significativa para a modularização do sistema.
 		\end{itemize}
 		\begin{figure}[h]
 			%\caption{ROS Master}
@@ -601,7 +601,7 @@
 				\item Cria o publisher e subscriber.
 				\item Calback ler um tópico enviado por outro nó ROS.
 				\item Faz o tratamento dos dados recebidos e os envia a SoC.
-				\item Recebe dados do SoC e montar mensagem ROS para ser publicado em um tópico
+				\item Recebe dados do SoC e monta as mensagem ROS para ser publicado em um tópico
 			\end{itemize}
 			\column{.45\textwidth}
 			\begin{figure}[h]
@@ -680,7 +680,7 @@
     \begin{alertblock}{Servidor: Interface socket server}
 		\vspace{0.3cm}
 		\begin{itemize}
-			\item Baixar, compilar e intalar a libinterfacesocket no linux embarcado.
+			\item Baixar, compilar e instalar a libinterfacesocket no linux embarcado.
 			\item Mantém uma porta aberta esperando a conexão com o cliente.
 			\item Dados recebidos do cliente são enviados para serem processados pelo FPGA e em seguida devolvidos ao cliente.
 			\item O acesso do servidor ao FPGA é feito através de mapeamento de endereços do
@@ -822,7 +822,7 @@
 % }
 
 
-\begin{frame}[allowframebreaks]{Referencias}
+\begin{frame}[allowframebreaks]{Referências}
   \bibliography{demo}
   %\bibliographystyle{abbrv}
   \bibliographystyle{acm}
